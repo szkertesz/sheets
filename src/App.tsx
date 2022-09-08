@@ -1,5 +1,3 @@
-import { User } from 'firebase/auth'
-import React, { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import 'app.css'
 import Login from 'pages/login/login'

@@ -1,6 +1,5 @@
-import React, { useState, useContext, useEffect } from 'react'
+import { useEffect } from 'react'
 import { signInWithGoogle } from 'features/firebase'
-import { User } from 'firebase/auth'
 import { useUser } from 'user-context'
 import { useNavigate } from 'react-router-dom'
 

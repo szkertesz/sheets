@@ -1,5 +1,5 @@
 import { User } from 'firebase/auth'
-import React, { useContext, useState, ReactNode } from 'react'
+import React, { useState } from 'react'
 
 type UserProviderProps = { children: React.ReactNode }
 
