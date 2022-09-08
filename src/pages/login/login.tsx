@@ -1,17 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { signInWithGoogle } from 'features/firebase'
 import { User } from 'firebase/auth'
+import { useUser } from 'user-context'
+import { useNavigate } from 'react-router-dom'
 
 function Login() {
-    const [user, setUser] = useState<null | User>(null)
-    const [token, setToken] = useState<null | string | undefined>(null)
+    // const [user, setUser] = useState<null | User>(null)
+    // const [token, setToken] = useState<null | string | undefined>(null)
+    const { user, setUser } = useUser()
+    const navigate = useNavigate()
 
     const signIn = async () => {
         const user = await signInWithGoogle()
         if (user) {
-            setToken(await user.getIdToken())
+            // setToken(await user.getIdToken())
+            setUser(user)
         }
     }
+    useEffect(() => {
+        if (user) navigate('/presents')
+    })
     return (
         <div className="login">
             <header className="login__header">
@@ -19,7 +27,7 @@ function Login() {
             </header>
             <main>
                 <button onClick={signIn}>sign in w/ Google</button>
-                <p>{token ? token : 'token is missing'}</p>
+                {/* <p>{token ? token : 'token is missing'}</p> */}
             </main>
         </div>
     )
