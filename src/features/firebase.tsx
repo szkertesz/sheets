@@ -24,12 +24,15 @@ const firebaseApp = initializeApp(firebaseConfig)
 
 const auth = getAuth(firebaseApp)
 const googleProvider = new GoogleAuthProvider()
+googleProvider.addScope('https://www.googleapis.com/auth/spreadsheets')
 
 const signInWithGoogle = async () => {
     try {
-        const res = await signInWithPopup(auth, googleProvider)
-        const user = res.user
-        return user
+        const result = await signInWithPopup(auth, googleProvider)
+        const user = result.user
+        const credential = GoogleAuthProvider.credentialFromResult(result)
+        const token = credential?.accessToken
+        return { user, token }
     } catch (error) {
         if (error instanceof Error) {
             console.error(error)

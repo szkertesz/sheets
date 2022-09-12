@@ -6,19 +6,19 @@ import { useNavigate } from 'react-router-dom'
 function Login() {
     // const [user, setUser] = useState<null | User>(null)
     // const [token, setToken] = useState<null | string | undefined>(null)
-    const { user, setUser } = useUser()
+    const { user, setUser, token, setToken } = useUser()
     const navigate = useNavigate()
 
     const signIn = async () => {
-        const user = await signInWithGoogle()
-        if (user) {
-            // setToken(await user.getIdToken())
-            setUser(user)
+        const result = await signInWithGoogle() //to get user & accesstoken
+        if (result?.user && result?.token) {
+            setUser(result.user)
+            setToken(result.token)
         }
     }
     useEffect(() => {
         if (user) navigate('/presents')
-    })
+    }, [user])
     return (
         <div className="login">
             <header className="login__header">
