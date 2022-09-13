@@ -25,6 +25,7 @@ const firebaseApp = initializeApp(firebaseConfig)
 const auth = getAuth(firebaseApp)
 const googleProvider = new GoogleAuthProvider()
 googleProvider.addScope('https://www.googleapis.com/auth/spreadsheets')
+// googleProvider.addScope('https://www.googleapis.com/auth/drive.file')
 
 const signInWithGoogle = async () => {
     try {

@@ -5,13 +5,19 @@ import { ITableRowData } from './table-row.interface'
 function TableRow({ rowData }: ITableRowData): JSX.Element {
     return (
         <tbody>
-            {rowData.map((cellData, i) => (
-                <tr key={`${cellData}_${i}`}>
-                    {cellData.map((data, index) => (
-                        <td key={`${data}_${index}`}>
-                            {index === 1 ? (
-                                <a href={data}>{data}</a>
-                            ) : index === cellData.length - 1 ? (
+            {rowData.map((cellData, index) => (
+                <tr key={`${cellData}_${index}`}>
+                    {cellData.map((data, i) => (
+                        <td key={`${data}_${i}`}>
+                            {i === 1 ? (
+                                <a
+                                    href={data}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    {data}
+                                </a>
+                            ) : i === cellData.length - 1 ? (
                                 <StatusToggle toggleData={{ data, index }} />
                             ) : (
                                 <span>{data}</span>

@@ -10,11 +10,11 @@ function Presents() {
     const [data, setData] = useState<string[][] | null>(null)
     // const [data, setData] = useState<[] | null>(null)
     const navigate = useNavigate()
-    const SHEET_ID = '***REMOVED***'
+    const SHEET_ID = process.env.REACT_APP_SHEET_ID
 
     const getSheetData = async (token: string) => {
         const response = await client.get(
-            `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/presents!A1:C3`,
+            `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/presents!A:C`,
             {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -22,7 +22,6 @@ function Presents() {
             }
         )
         setData(response.data.values)
-        console.log(response.data.values.slice(1))
     }
     useEffect(() => {
         if (!user) navigate('/')

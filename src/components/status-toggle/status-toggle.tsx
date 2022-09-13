@@ -1,30 +1,36 @@
 import React, { useState } from 'react'
 import styles from './status-toggle.module.scss'
-interface IStatusToggle {
-    toggleData: {
-        data: string
-        index: number
-    }
-}
+import { IStatusToggle } from './status-toggle.interface'
+import { useUser } from 'user-context'
+import { updateSheetValues } from 'features/sheets/update-sheet-values'
+
 function StatusToggle({ toggleData }: IStatusToggle) {
+    const { token } = useUser()
     const [value, setValue] = useState<string>(toggleData.data)
     const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setValue(event.target.value)
+        const sheetId = process.env.REACT_APP_SHEET_ID
+        let value = event.target.value
+        let row = event.target.dataset.rowindex
+        setValue(value)
+        if (token && sheetId)
+            updateSheetValues(token, sheetId, `C${Number(row) + 1}`, value)
     }
+
     return (
         <fieldset className={styles['status-toggle']}>
             <div className={styles['status-toggle__group']}>
                 <input
                     type="radio"
-                    name={'status-radio'}
-                    id={`radio-true`}
-                    value="true"
-                    checked={value === 'true'}
+                    name={`status-radio-${toggleData.index}`}
+                    id={`radio-true-${toggleData.index}`}
+                    value="TRUE"
+                    checked={value === 'TRUE'}
                     onChange={handleOnChange}
                     className="visually-hidden"
+                    data-rowindex={toggleData.index + 1}
                 />
                 <label
-                    htmlFor={`radio-true`}
+                    htmlFor={`radio-true-${toggleData.index}`}
                     className={`${styles['status-toggle__label']} button`}
                 >
                     true
@@ -33,15 +39,16 @@ function StatusToggle({ toggleData }: IStatusToggle) {
             <div className={styles['status-toggle__group']}>
                 <input
                     type="radio"
-                    name={'status-radio'}
-                    id={`radio-read`}
-                    value="false"
-                    checked={value === 'false'}
+                    name={`status-radio-${toggleData.index}`}
+                    id={`radio-false-${toggleData.index}`}
+                    value="FALSE"
+                    checked={value === 'FALSE'}
                     onChange={handleOnChange}
                     className="visually-hidden"
+                    data-rowindex={toggleData.index + 1}
                 />
                 <label
-                    htmlFor={`radio-read`}
+                    htmlFor={`radio-false-${toggleData.index}`}
                     className={`${styles['status-toggle__label']} button`}
                 >
                     false
