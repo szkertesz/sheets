@@ -14,6 +14,7 @@ function TableRow({ rowData }: ITableRowData): JSX.Element {
                                     href={data}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    className="link"
                                 >
                                     {data}
                                 </a>

@@ -1,0 +1,29 @@
+.table {
+    table-layout: fixed;
+    width: 100%;
+    margin-top: calc(var(--unit) * 5);
+    // padding: var(--tablePadding);
+    border-spacing: var(--tablePadding);
+    background-color: white;
+    box-shadow: var(--cardShadow);
+    border-radius: var(--cardBorderRadius);
+
+    th,
+    td {
+        padding: var(--unit);
+    }
+
+    tr {
+        & > *:first-child {
+            width: 25%;
+            min-width: 12ch;
+        }
+        & > *:nth-child(2) {
+            width: 50%;
+            min-width: 12ch;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}
