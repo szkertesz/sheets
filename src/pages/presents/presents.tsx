@@ -28,7 +28,7 @@ function Presents() {
         if (token) {
             getSheetData(token)
         }
-    }, [user])
+    }, [user, token]) // eslint-disable-line react-hooks/exhaustive-deps
     return (
         <>
             <h1>Presents</h1>

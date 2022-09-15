@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 function Login() {
     // const [user, setUser] = useState<null | User>(null)
     // const [token, setToken] = useState<null | string | undefined>(null)
-    const { user, setUser, token, setToken } = useUser()
+    const { user, setUser, setToken } = useUser()
     const navigate = useNavigate()
 
     const signIn = async () => {
@@ -18,7 +18,7 @@ function Login() {
     }
     useEffect(() => {
         if (user) navigate('/presents')
-    }, [user])
+    }, [user]) // eslint-disable-line react-hooks/exhaustive-deps
     return (
         <div className="login">
             <header className="login__header">
