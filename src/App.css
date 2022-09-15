@@ -67,6 +67,7 @@ h1 {
     line-height: 1;
     background-color: var(--buttonColor);
     border-radius: var(--globalBorderRadius);
+    color: var(--lightColor);
 }
 .button:hover {
     background-color: var(--buttonHoverColor);

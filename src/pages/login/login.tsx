@@ -22,10 +22,14 @@ function Login() {
     return (
         <div className="login">
             <header className="login__header">
-                <h1>Firebase Login</h1>
+                <h1>Login</h1>
+                <p>Az ajándékötleteket csak bejelentkezés után láthatod.</p>
+                <p>Egyelőre csak google accounttal tudsz bejelentkezni 😕</p>
             </header>
             <main>
-                <button onClick={signIn}>sign in w/ Google</button>
+                <button onClick={signIn} className="button">
+                    Bejelentkezés Google accounttal
+                </button>
                 {/* <p>{token ? token : 'token is missing'}</p> */}
             </main>
         </div>
