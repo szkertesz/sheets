@@ -1,3 +1,91 @@
-.App {
-    text-align: left;
+/* custom properties */
+:root {
+    --unit: 0.5rem;
+
+    --lightColor: #fff;
+    --accentColor: #15be53;
+    --shadeOneColor: #72d151;
+    --shadeTwoColor: #15be1c;
+    --shadeThreeColor: #13ad4c;
+    --shadeFourColor: #008431;
+    --complimentaryColor: #fab000;
+    --bodyBackgroundColor: #f6f9fc;
+    --linkColor: var(--accentColor);
+    --linkHoverColor: #0a2540;
+    --buttonColor: var(--accentColor);
+    --buttonHoverColor: #0a2540;
+    --buttonDisabledColor: #cfd7df;
+    --buttonDisabledOpacity: 0.7;
+    --titleColor: #0a2540;
+    --textColor: #425466;
+    --inputBackground: #e6ebf1;
+    --inputPlaceholderColor: #8898aa;
+    --inputTextColor: #0a2540;
+
+    --cardShadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+        0 8px 16px -8px rgba(0, 0, 0, 0.3);
+
+    --globalBorderRadius: 0.25rem;
+    --cardBorderRadius: 0.5rem;
+
+    --tablePadding: 0.25rem;
+
+    --systemFont: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+        'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+        'Helvetica Neue', sans-serif;
+    --fontWeightBold: 700;
+    --fontWeightNormal: 400;
+    --titleFontSize: 56px;
+    --titleLineHeight: 68px;
+    --titleLetterSpacing: -0.02em;
+    --titleFont: var(--fontWeightBold) var(--titleFontSize) /
+        var(--titleLineHeight) var(--systemFont);
+    --bodyFont: var(--fontWeightNormal) var(--bodyFontSize, 18px) /
+        var(--bodyLineHeight, 1.555555556) var(--systemFont);
+
+    --transitionDuration: 0.25s;
+}
+
+body {
+    font: var(--bodyFont);
+    background-color: var(--bodyBackgroundColor);
+    hyphens: auto;
+}
+
+h1 {
+    font: var(--titleFont);
+    color: var(--titleColor);
+    letter-spacing: var(--titleLetterSpacing, inherit);
+    margin-bottom: calc(var(--unit) * 4);
+}
+
+/*
+ * button styles
+ */
+.button {
+    padding: 0.5rem 1rem;
+    line-height: 1;
+    background-color: var(--buttonColor);
+    border-radius: var(--globalBorderRadius);
+}
+.button:hover {
+    background-color: var(--buttonHoverColor);
+}
+.button:disabled {
+    background-color: var(--buttonDisabledColor);
+    opacity: var(--buttonDisabledOpacity);
+}
+
+/*
+ * link styles
+ */
+.link {
+    color: var(--linkColor);
+    transition: var(--transitionDuration) color ease;
+}
+.link:visited {
+    color: var(--linkColor);
+}
+.link:hover {
+    color: var(--linkHoverColor);
 }

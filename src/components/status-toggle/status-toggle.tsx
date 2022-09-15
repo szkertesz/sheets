@@ -31,7 +31,7 @@ function StatusToggle({ toggleData }: IStatusToggle) {
                 />
                 <label
                     htmlFor={`radio-true-${toggleData.index}`}
-                    className={`${styles['status-toggle__label']} button`}
+                    className={`${styles['status-toggle__label']}`}
                 >
                     true
                 </label>
@@ -49,7 +49,7 @@ function StatusToggle({ toggleData }: IStatusToggle) {
                 />
                 <label
                     htmlFor={`radio-false-${toggleData.index}`}
-                    className={`${styles['status-toggle__label']} button`}
+                    className={`${styles['status-toggle__label']}`}
                 >
                     false
                 </label>

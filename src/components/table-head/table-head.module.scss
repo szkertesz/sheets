@@ -1,0 +1,16 @@
+.table-head {
+    th {
+        border-radius: var(--globalBorderRadius);
+        font-weight: 500;
+        color: var(--lightColor);
+        &:nth-child(1) {
+            background-color: var(--shadeTwoColor);
+        }
+        &:nth-child(2) {
+            background-color: var(--shadeThreeColor);
+        }
+        &:nth-child(3) {
+            background-color: var(--shadeFourColor);
+        }
+    }
+}

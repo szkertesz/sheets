@@ -4,11 +4,11 @@ import { useUser } from 'user-context'
 import { client } from 'features/api/client'
 import TableHead from 'components/table-head'
 import TableRow from 'components/table-row'
+import Table from 'ui/table/table'
 
 function Presents() {
     const { user, token } = useUser()
     const [data, setData] = useState<string[][] | null>(null)
-    // const [data, setData] = useState<[] | null>(null)
     const navigate = useNavigate()
     const SHEET_ID = process.env.REACT_APP_SHEET_ID
 
@@ -31,14 +31,14 @@ function Presents() {
     }, [user, token]) // eslint-disable-line react-hooks/exhaustive-deps
     return (
         <>
-            <h1>Presents</h1>
-            <p>Hello {user?.displayName}</p>
-            <p>Your Google access token is: {token}</p>
+            <h1>Ajándék&shy;ötletek</h1>
+            <p>Szia {user?.displayName}!</p>
+            <p>Ezek a dolgok, amiknek hasznát vennénk, vagy örülnénk nekik:</p>
             {data && (
-                <table>
+                <Table>
                     <TableHead headData={data[0]} />
                     <TableRow rowData={data.slice(1)} />
-                </table>
+                </Table>
             )}
         </>
     )
