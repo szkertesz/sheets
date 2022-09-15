@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import 'app.css'
+import 'App.css'
 import Login from 'pages/login/login'
 import Container from 'ui/container/container'
 import Presents from 'pages/presents/presents'
