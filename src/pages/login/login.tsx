@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { signInWithGoogle } from 'features/firebase'
 import { useUser } from 'user-context'
 import { useNavigate } from 'react-router-dom'
+import styles from './login.module.scss'
 
 function Login() {
     // const [user, setUser] = useState<null | User>(null)
@@ -20,14 +21,17 @@ function Login() {
         if (user) navigate('/presents')
     }, [user]) // eslint-disable-line react-hooks/exhaustive-deps
     return (
-        <div className="login">
+        <div className={styles.login}>
             <header className="login__header">
                 <h1>Login</h1>
                 <p>Az ajándékötleteket csak bejelentkezés után láthatod.</p>
                 <p>Egyelőre csak google accounttal tudsz bejelentkezni 😕</p>
             </header>
             <main>
-                <button onClick={signIn} className="button">
+                <button
+                    onClick={signIn}
+                    className={`${styles['login__button']} button`}
+                >
                     Bejelentkezés Google accounttal
                 </button>
                 {/* <p>{token ? token : 'token is missing'}</p> */}
