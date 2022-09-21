@@ -6,7 +6,7 @@ export const updateSheetValues = (
     cell: string,
     value: string
 ) => {
-    // convert string values to boolean before send to Sheets API, which will render checkboxes in the source spreadsheet
+    // convert string values to boolean before sending it to Sheets API, which will render checkboxes in the source spreadsheet
     const convertedValue = value === 'TRUE' ? true : false
     return fetch(
         `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${cell}?valueInputOption=RAW&key=${process.env.REACT_APP_SHEETS_API_KEY}`,
