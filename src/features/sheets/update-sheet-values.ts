@@ -1,11 +1,14 @@
+import { appendFile } from 'fs'
+
 export const updateSheetValues = (
     token: string,
     sheetId: string,
     cell: string,
     value: string
 ) => {
+    // convert string values to boolean before send to Sheets API, which will render checkboxes in the source spreadsheet
+    const convertedValue = value === 'TRUE' ? true : false
     return fetch(
-        // `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}:batchUpdate`,
         `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${cell}?valueInputOption=RAW&key=${process.env.REACT_APP_SHEETS_API_KEY}`,
         {
             method: 'PUT',
@@ -17,7 +20,7 @@ export const updateSheetValues = (
             body: JSON.stringify({
                 range: `${cell}`,
                 majorDimension: 'ROWS',
-                values: [[`${value}`]],
+                values: [[convertedValue]],
             }),
         }
     )
