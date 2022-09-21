@@ -56,6 +56,32 @@ function StatusToggle({ toggleData }: IStatusToggle) {
                 >
                     false
                 </label>
+                <button>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="36"
+                        height="36"
+                        viewBox="0 0 20 20"
+                    >
+                        <g fill="none" fill-rule="evenodd">
+                            <rect
+                                stroke=""
+                                fill=""
+                                x="3.5"
+                                y="3.5"
+                                width="13"
+                                height="13"
+                                rx="2"
+                            />
+                            <path
+                                stroke=""
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M6 10.157L8.572 13 14 7"
+                            />
+                        </g>
+                    </svg>
+                </button>
             </div>
         </fieldset>
     )

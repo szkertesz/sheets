@@ -1,16 +1,42 @@
 .status-toggle {
     display: flex;
     align-items: center;
+    justify-content: center;
     border: none;
     padding: 0;
 
     &__group {
-        & + & {
-            margin-left: 0.25rem;
+        display: flex;
+        align-items: center;
+    }
+
+    input,
+    label {
+        position: absolute;
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+
+    input {
+        &:disabled ~ svg {
+            opacity: var(--buttonDisabledOpacity);
+        }
+        &[value='FALSE']:checked ~ svg path {
+            stroke-dashoffset: 12px;
         }
     }
-    input:checked + label {
-        background-color: green;
-        color: white;
+
+    svg {
+        stroke: var(--shadeFourColor);
+        rect {
+            fill: var(--shadeFourColor);
+        }
+        path {
+            stroke: var(--lightColor);
+            stroke-dasharray: 12px;
+            stroke-dashoffset: 0px;
+            transition: stroke-dashoffset 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
     }
 }
