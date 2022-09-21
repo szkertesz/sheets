@@ -1,7 +1,8 @@
 .table {
     table-layout: fixed;
     width: 100%;
-    margin-top: calc(var(--unit) * 5);
+    margin-top: calc(var(--unit) * 4);
+    margin-bottom: calc(var(--unit) * 4);
     // padding: var(--tablePadding);
     border-spacing: var(--tablePadding);
     background-color: white;

@@ -1,10 +1,12 @@
 import StatusToggle from 'components/status-toggle/status-toggle'
-import React from 'react'
-import { ITableRowData } from './table-row.interface'
+import { useUser } from 'user-context'
+import { ITableBodyData } from './table-body.interface'
+import styles from './table-body.module.scss'
 
-function TableRow({ rowData }: ITableRowData): JSX.Element {
+function TableBody({ rowData }: ITableBodyData): JSX.Element {
+    const { user } = useUser()
     return (
-        <tbody>
+        <tbody className={styles['table-body']}>
             {rowData.map((cellData, index) => (
                 <tr key={`${cellData}_${index}`}>
                     {cellData.map((data, i) => (
@@ -19,7 +21,13 @@ function TableRow({ rowData }: ITableRowData): JSX.Element {
                                     {data}
                                 </a>
                             ) : i === cellData.length - 1 ? (
-                                <StatusToggle toggleData={{ data, index }} />
+                                user ? (
+                                    <StatusToggle
+                                        toggleData={{ data, index }}
+                                    />
+                                ) : (
+                                    '?'
+                                )
                             ) : (
                                 <span>{data}</span>
                             )}
@@ -31,4 +39,4 @@ function TableRow({ rowData }: ITableRowData): JSX.Element {
     )
 }
 
-export default TableRow
+export default TableBody

@@ -1,19 +1,21 @@
 import { Route, Routes } from 'react-router-dom'
 import 'App.css'
-import Login from 'pages/login/login'
-import Container from 'ui/container/container'
-import Presents from 'pages/presents/presents'
+import Presents from 'pages/presents'
 import { UserProvider } from 'user-context'
+import Layout from 'components/layout'
+import ErrorPage from 'pages/error'
+import Table from 'ui/table/table'
 
 function App() {
     return (
         <>
             <UserProvider>
                 <Routes>
-                    <Route path="/" element={<Container />}>
-                        <Route index element={<Login />} />
-                        <Route path="/presents" element={<Presents />} />
+                    <Route element={<Layout />}>
+                        <Route index element={<Presents />} />
+                        <Route path="edit" element={<Presents editable />} />
                     </Route>
+                    <Route path="*" element={<ErrorPage />} />
                 </Routes>
             </UserProvider>
         </>

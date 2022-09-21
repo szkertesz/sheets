@@ -5,8 +5,6 @@ import { useNavigate } from 'react-router-dom'
 import styles from './login.module.scss'
 
 function Login() {
-    // const [user, setUser] = useState<null | User>(null)
-    // const [token, setToken] = useState<null | string | undefined>(null)
     const { user, setUser, setToken } = useUser()
     const navigate = useNavigate()
 
@@ -18,25 +16,27 @@ function Login() {
         }
     }
     useEffect(() => {
-        if (user) navigate('/presents')
+        if (user) navigate('/edit')
     }, [user]) // eslint-disable-line react-hooks/exhaustive-deps
+
     return (
-        <div className={styles.login}>
-            <header className="login__header">
-                <h1>Login</h1>
-                <p>Az ajándékötleteket csak bejelentkezés után láthatod.</p>
-                <p>Egyelőre csak google accounttal tudsz bejelentkezni 😕</p>
-            </header>
-            <main>
-                <button
-                    onClick={signIn}
-                    className={`${styles['login__button']} button`}
-                >
-                    Bejelentkezés Google accounttal
-                </button>
-                {/* <p>{token ? token : 'token is missing'}</p> */}
-            </main>
-        </div>
+        <section className={styles.login}>
+            <p>
+                Ha megszereztél egy ajándékot a listából, jelezheted nekünk és a
+                többieknek azzal, hogy kipipálod a "megvettem" oszlopban, de
+                ahhoz előbb be kell jelentkezned.
+            </p>
+            <p>
+                A bejelentkezéshez Google felhasználói fiók szükséges (ha
+                használsz Gmailt, akkor van ilyened).
+            </p>
+            <button
+                onClick={signIn}
+                className={`${styles['login__button']} button`}
+            >
+                Bejelentkezem
+            </button>
+        </section>
     )
 }
 

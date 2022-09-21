@@ -2,4 +2,8 @@
     &__button {
         margin-top: calc(var(--unit) * 4);
     }
+
+    p + p {
+        margin-top: calc(var(--unit) * 2);
+    }
 }

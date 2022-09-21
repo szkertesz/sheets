@@ -1,14 +1,8 @@
 import { IContainer } from './container.interface'
-import { Outlet } from 'react-router-dom'
 import styles from './container.module.scss'
 
 function Container(props: IContainer) {
-    return (
-        <div className={styles.container}>
-            <Outlet />
-            {props.children}
-        </div>
-    )
+    return <div className={styles.container}>{props.children}</div>
 }
 
 export default Container
