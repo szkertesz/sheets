@@ -7,6 +7,7 @@ import { updateSheetValues } from 'features/sheets/update-sheet-values'
 function StatusToggle({ toggleData }: IStatusToggle) {
     const { token } = useUser()
     const [value, setValue] = useState<string>(toggleData.data)
+    // const [isDisabled, setIsDisabled] = useState<boolean>(toggleData.data === 'TRUE' ? true : false)
     const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const sheetId = process.env.REACT_APP_SHEET_ID
         let value = event.target.value
@@ -28,6 +29,7 @@ function StatusToggle({ toggleData }: IStatusToggle) {
                     onChange={handleOnChange}
                     className="visually-hidden"
                     data-rowindex={toggleData.index + 1}
+                    disabled={toggleData.data === 'TRUE' ? true : false}
                 />
                 <label
                     htmlFor={`radio-true-${toggleData.index}`}
@@ -46,6 +48,7 @@ function StatusToggle({ toggleData }: IStatusToggle) {
                     onChange={handleOnChange}
                     className="visually-hidden"
                     data-rowindex={toggleData.index + 1}
+                    disabled={toggleData.data === 'TRUE' ? true : false}
                 />
                 <label
                     htmlFor={`radio-false-${toggleData.index}`}

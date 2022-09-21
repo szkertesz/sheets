@@ -11,6 +11,7 @@ function TableBody({ rowData }: ITableBodyData): JSX.Element {
                 <tr key={`${cellData}_${index}`}>
                     {cellData.map((data, i) => (
                         <td key={`${data}_${i}`}>
+                            {/* the values of 2nd column represent link URLs */}
                             {i === 1 ? (
                                 <a
                                     href={data}
@@ -20,7 +21,9 @@ function TableBody({ rowData }: ITableBodyData): JSX.Element {
                                 >
                                     {data}
                                 </a>
-                            ) : i === cellData.length - 1 ? (
+                            ) : // the cells of last column
+                            i === cellData.length - 1 ? (
+                                // user logged in case
                                 user ? (
                                     <StatusToggle
                                         toggleData={{ data, index }}
