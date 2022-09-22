@@ -1,5 +1,3 @@
-import { appendFile } from 'fs'
-
 export const updateSheetValues = (
     token: string,
     sheetId: string,
