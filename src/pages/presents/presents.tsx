@@ -6,7 +6,6 @@ import TableHead from 'components/table-head'
 import TableBody from 'components/table-body'
 import Table from 'ui/table/table'
 import Login from 'pages/login'
-import styles from './presents.module.scss'
 
 interface IPresents {
     editable?: boolean

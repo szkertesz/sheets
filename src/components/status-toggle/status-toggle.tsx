@@ -9,20 +9,18 @@ function StatusToggle({ toggleData }: IStatusToggle) {
     const [isChecked, setIsChecked] = useState<boolean>(
         toggleData.data === 'TRUE' ? true : false
     )
-    // const [isDisabled, setIsDisabled] = useState<boolean>(toggleData.data === 'TRUE' ? true : false)
     const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const checkedState = event.target.checked
         setIsChecked(checkedState)
-        // let value = isChecked ? 'TRUE' : 'FALSE'
         const sheetId = process.env.REACT_APP_SHEET_ID
         let row = event.target.dataset.rowindex
-        // if (token && sheetId)
-        //     updateSheetValues(
-        //         token,
-        //         sheetId,
-        //         `C${Number(row) + 1}`,
-        //         checkedState
-        //     )
+        if (token && sheetId)
+            updateSheetValues(
+                token,
+                sheetId,
+                `C${Number(row) + 1}`,
+                checkedState
+            )
     }
 
     return (

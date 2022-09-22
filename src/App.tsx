@@ -4,7 +4,6 @@ import Presents from 'pages/presents'
 import { UserProvider } from 'user-context'
 import Layout from 'components/layout'
 import ErrorPage from 'pages/error'
-import Table from 'ui/table/table'
 
 function App() {
     return (
