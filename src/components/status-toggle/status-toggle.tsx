@@ -16,19 +16,18 @@ function StatusToggle({ toggleData }: IStatusToggle) {
         // let value = isChecked ? 'TRUE' : 'FALSE'
         const sheetId = process.env.REACT_APP_SHEET_ID
         let row = event.target.dataset.rowindex
-        if (token && sheetId)
-            updateSheetValues(
-                token,
-                sheetId,
-                `C${Number(row) + 1}`,
-                checkedState
-            )
+        // if (token && sheetId)
+        //     updateSheetValues(
+        //         token,
+        //         sheetId,
+        //         `C${Number(row) + 1}`,
+        //         checkedState
+        //     )
     }
 
     return (
         <fieldset className={styles['status-toggle']}>
             <div className={styles['status-toggle__group']}>
-                <span>{String(isChecked)}</span>
                 <input
                     type="checkbox"
                     name={`status-purchased-${toggleData.index}`}
@@ -47,9 +46,9 @@ function StatusToggle({ toggleData }: IStatusToggle) {
                 </label>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="36"
-                    height="36"
-                    viewBox="0 0 20 20"
+                    width="24"
+                    height="24"
+                    viewBox="3 3 14 14"
                 >
                     <g fill="none" fillRule="evenodd">
                         <rect

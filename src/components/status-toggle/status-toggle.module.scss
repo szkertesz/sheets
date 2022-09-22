@@ -8,35 +8,55 @@
     &__group {
         display: flex;
         align-items: center;
+        position: relative;
+        width: 24px;
+        height: 24px;
     }
 
-    input,
     label {
-        // position: absolute;
-        // width: 0;
-        // height: 0;
-        // opacity: 0;
+        position: absolute;
+        width: 0;
+        height: 0;
+        opacity: 0;
     }
 
     input {
-        &:disabled ~ svg {
-            opacity: var(--buttonDisabledOpacity);
+        position: absolute;
+        opacity: 0;
+        width: 24px;
+        height: 24px;
+        margin: 0;
+        outline: 1px dashed red;
+        cursor: pointer;
+        &:disabled {
+            cursor: not-allowed;
+            & ~ svg {
+                opacity: var(--buttonDisabledOpacity);
+            }
         }
-        &:checked ~ svg path {
-            stroke-dashoffset: 0;
+        &:checked ~ svg {
+            rect {
+                fill: var(--shadeFourColor);
+            }
+            path {
+                stroke-dashoffset: 0;
+            }
         }
     }
 
     svg {
+        pointer-events: none;
         stroke: var(--shadeFourColor);
         rect {
-            fill: var(--shadeFourColor);
+            // fill: var(--shadeFourColor);
+            fill: transparent;
+            transition: fill 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         }
         path {
             stroke: var(--lightColor);
             stroke-dasharray: 12px;
             stroke-dashoffset: 12px;
-            transition: stroke-dashoffset 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: stroke-dashoffset 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0s;
         }
     }
 }

@@ -28,8 +28,10 @@ function TableBody({ rowData }: ITableBodyData): JSX.Element {
                                     <StatusToggle
                                         toggleData={{ data, index }}
                                     />
+                                ) : data === 'TRUE' ? (
+                                    'Már megvan'
                                 ) : (
-                                    '?'
+                                    'Még nincs meg'
                                 )
                             ) : (
                                 <span>{data}</span>
