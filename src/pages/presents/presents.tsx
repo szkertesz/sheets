@@ -62,10 +62,12 @@ function Presents({ editable }: IPresents) {
             )}
 
             {data && (
-                <Table>
-                    <TableHead headData={data[0]} />
-                    <TableBody rowData={data.slice(1)} />
-                </Table>
+                <form action="">
+                    <Table>
+                        <TableHead headData={data[0]} />
+                        <TableBody rowData={data.slice(1)} />
+                    </Table>
+                </form>
             )}
 
             {editable && <p>Köszönjük ❤️</p>}
